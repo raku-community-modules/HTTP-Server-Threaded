@@ -4,6 +4,7 @@ class HTTP::Server::Threaded::Request {
   has Str $.version;
   has Str %.headers;
   has Buf $.data is rw;
+  has %.params;
 
   method header(*@headers) {
     my @r;
