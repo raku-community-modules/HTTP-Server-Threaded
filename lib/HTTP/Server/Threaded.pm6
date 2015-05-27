@@ -9,6 +9,7 @@ class HTTP::Server::Threaded {
 
   has @.mws;
   has @.hws;
+  has @.pws;
 
   method middleware(Callable $sub) {
     @.mws.push($sub);
@@ -16,6 +17,10 @@ class HTTP::Server::Threaded {
 
   method handler(Callable $sub) {
     @.hws.push($sub);
+  }
+
+  method after(Callable $sub) {
+    @.pws.push($sub);
   }
 
   method !eor($req, $data is rw) returns Bool {
@@ -103,6 +108,9 @@ class HTTP::Server::Threaded {
               }
             }
             try $conn.close;
+            for @.pws -> $p {
+              $p($req, $res);
+            }
             $done = 1;
           }
           last if $done;
