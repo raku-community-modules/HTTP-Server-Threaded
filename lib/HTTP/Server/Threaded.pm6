@@ -78,7 +78,7 @@ class HTTP::Server::Threaded does HTTP::Server {
                   %headers{@parse[0].trim} = @parse[1].trim // Any;
                 });
                 $data .=subbuf($x + 4);
-                $req = HTTP::Server::Threaded::Request.new(:$method, :$resource, :$version, :%headers);
+                $req = HTTP::Server::Threaded::Request.new(:$method, uri => $resource, :$version, :%headers);
                 $res = HTTP::Server::Threaded::Response.new(:connection($conn));
                 for @.mws -> $middle {
                   try { 
