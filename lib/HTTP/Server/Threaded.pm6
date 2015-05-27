@@ -1,6 +1,8 @@
 use HTTP::Server::Threaded::Request;
 use HTTP::Server::Threaded::Response;
-class HTTP::Server::Threaded {
+use HTTP::Server;
+
+class HTTP::Server::Threaded does HTTP::Server {
 
   has Int              $.port         = 8091;
   has Str              $.ip           = '0.0.0.0';
