@@ -6,7 +6,7 @@ class HTTP::Server::Threaded does HTTP::Server {
 
   has Int              $.port         = 8091;
   has Str              $.ip           = '0.0.0.0';
-  has Supply           $!connections .=new; 
+  has Supplier         $!connections .=new; 
   has IO::Socket::INET $.server;     
 
   has @.mws;
