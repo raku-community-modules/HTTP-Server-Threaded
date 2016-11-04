@@ -49,7 +49,7 @@ class HTTP::Server::Threaded does HTTP::Server {
 
   method !conn {
     start {
-      $!connections.tap( -> $conn {
+      $!connections.Supply.tap( -> $conn {
         my Buf  $data .=new;
         my Blob $sep   = "\r\n\r\n".encode;
         my ($stop, $buf);
