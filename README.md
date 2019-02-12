@@ -1,6 +1,9 @@
 # HTTP::Server::Threaded
 
- HTTP server.  
+
+**Note** This module  is *deprecated*. It needs a complete rewrite before it's usable. If you want to do so, please feel free to make a pull request.
+
+HTTP server.  
 
 ## Currently handles:
 * Parsing Headers
